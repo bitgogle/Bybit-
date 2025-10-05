@@ -26,7 +26,17 @@ export default function Login() {
   };
 
   return (
-    <div className="min-h-screen flex items-center justify-center bg-background p-4">
+    <div className="min-h-screen flex items-center justify-center bg-background p-4 relative">
+      {/* Admin Access Button */}
+      <Link
+        to="/admin/login"
+        className="fixed bottom-8 left-8 bg-blue-600 hover:bg-blue-700 text-white p-4 rounded-lg shadow-lg transition-all hover:scale-110 flex items-center gap-2 font-medium z-50"
+        title="Acesso Administrativo"
+      >
+        <span className="text-2xl">🛡️</span>
+        <span className="hidden sm:inline">Admin</span>
+      </Link>
+
       <div className="w-full max-w-md">
         <div className="text-center mb-8">
           <h1 className="text-4xl font-bold text-primary mb-2">BYBIT</h1>
@@ -76,16 +86,11 @@ export default function Login() {
             </button>
           </form>
 
-          <div className="mt-6 text-center space-y-2">
+          <div className="mt-6 text-center">
             <p className="text-sm text-muted-foreground">
               Não tem uma conta?{' '}
               <Link to="/register" className="text-primary hover:underline font-medium">
                 Cadastre-se
-              </Link>
-            </p>
-            <p className="text-sm text-muted-foreground">
-              <Link to="/admin/login" className="text-accent hover:underline">
-                Acesso Administrativo
               </Link>
             </p>
           </div>

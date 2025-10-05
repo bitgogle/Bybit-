@@ -131,19 +131,19 @@ export default function AdminUsers() {
           ) : (
             <div className="overflow-x-auto">
               <table className="w-full">
-                <thead className="bg-secondary/50">
+                <thead className="bg-gray-50">
                   <tr>
-                    <th className="text-left py-4 px-6 font-medium">Nome</th>
-                    <th className="text-left py-4 px-6 font-medium">Email</th>
-                    <th className="text-left py-4 px-6 font-medium">Saldo</th>
-                    <th className="text-left py-4 px-6 font-medium">Status</th>
-                    <th className="text-left py-4 px-6 font-medium">Data</th>
-                    <th className="text-left py-4 px-6 font-medium">Ações</th>
+                    <th className="text-left py-4 px-6 font-medium text-gray-700">Nome</th>
+                    <th className="text-left py-4 px-6 font-medium text-gray-700">Email</th>
+                    <th className="text-left py-4 px-6 font-medium text-gray-700">Saldo</th>
+                    <th className="text-left py-4 px-6 font-medium text-gray-700">Status</th>
+                    <th className="text-left py-4 px-6 font-medium text-gray-700">Data</th>
+                    <th className="text-left py-4 px-6 font-medium text-gray-700">Ações</th>
                   </tr>
                 </thead>
                 <tbody>
                   {users.filter(u => !u.is_admin).map((user) => (
-                    <tr key={user.id} className="border-t border-border hover:bg-secondary/30">
+                    <tr key={user.id} className="border-t border-gray-200 hover:bg-gray-50">
                       <td className="py-4 px-6">
                         <p className="font-medium">{user.full_name}</p>
                         <p className="text-sm text-muted-foreground">@{user.username}</p>

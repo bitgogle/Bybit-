@@ -62,23 +62,23 @@ export default function AdminDashboard() {
         <div>
           <h2 className="text-xl font-bold mb-4">Investimentos</h2>
           <div className="grid grid-cols-1 md:grid-cols-4 gap-4">
-            <div className="bg-card border border-border rounded-lg p-6">
-              <p className="text-sm text-muted-foreground mb-2">Investimentos Ativos</p>
-              <p className="text-3xl font-bold text-accent">{stats?.investments?.active || 0}</p>
+            <div className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
+              <p className="text-sm text-gray-600 mb-2">Investimentos Ativos</p>
+              <p className="text-3xl font-bold text-blue-600">{stats?.investments?.active || 0}</p>
             </div>
-            <div className="bg-card border border-border rounded-lg p-6">
-              <p className="text-sm text-muted-foreground mb-2">Total de Investimentos</p>
-              <p className="text-3xl font-bold">{stats?.investments?.total || 0}</p>
+            <div className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
+              <p className="text-sm text-gray-600 mb-2">Total de Investimentos</p>
+              <p className="text-3xl font-bold text-gray-900">{stats?.investments?.total || 0}</p>
             </div>
-            <div className="bg-card border border-border rounded-lg p-6">
-              <p className="text-sm text-muted-foreground mb-2">Total Investido</p>
-              <p className="text-3xl font-bold text-primary">
+            <div className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
+              <p className="text-sm text-gray-600 mb-2">Total Investido</p>
+              <p className="text-3xl font-bold text-blue-700">
                 R$ {stats?.investments?.total_invested?.toFixed(2) || '0.00'}
               </p>
             </div>
-            <div className="bg-card border border-border rounded-lg p-6">
-              <p className="text-sm text-muted-foreground mb-2">Lucro Gerado</p>
-              <p className="text-3xl font-bold text-green-500">
+            <div className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
+              <p className="text-sm text-gray-600 mb-2">Lucro Gerado</p>
+              <p className="text-3xl font-bold text-green-600">
                 R$ {stats?.investments?.total_profit?.toFixed(2) || '0.00'}
               </p>
             </div>

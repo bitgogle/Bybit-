@@ -119,14 +119,14 @@ export default function AdminUsers() {
         </div>
 
         {/* Users Table */}
-        <div className="bg-card border border-border rounded-lg overflow-hidden">
+        <div className="bg-white border border-gray-200 rounded-lg overflow-hidden shadow-sm">
           {loading ? (
             <div className="p-8 text-center">
-              <p className="text-muted-foreground">Carregando...</p>
+              <p className="text-gray-600">Carregando...</p>
             </div>
           ) : users.length === 0 ? (
             <div className="p-8 text-center">
-              <p className="text-muted-foreground">Nenhum usuário encontrado</p>
+              <p className="text-gray-600">Nenhum usuário encontrado</p>
             </div>
           ) : (
             <div className="overflow-x-auto">

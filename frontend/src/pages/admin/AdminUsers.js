@@ -190,7 +190,7 @@ export default function AdminUsers() {
                               setSelectedUser(user);
                               setShowBalanceModal(true);
                             }}
-                            className="px-3 py-1 bg-primary hover:bg-primary/90 text-primary-foreground rounded text-sm font-medium"
+                            className="px-3 py-1 bg-blue-600 hover:bg-blue-700 text-white rounded text-sm font-medium"
                           >
                             Ajustar
                           </button>

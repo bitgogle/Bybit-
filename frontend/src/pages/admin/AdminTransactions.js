@@ -226,6 +226,6 @@ export default function AdminTransactions() {
           )}
         </div>
       </div>
-    </Layout>
+    </AdminLayout>
   );
 }

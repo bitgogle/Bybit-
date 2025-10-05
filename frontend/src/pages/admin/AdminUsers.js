@@ -81,12 +81,12 @@ export default function AdminUsers() {
         </div>
 
         {/* Filter */}
-        <div className="bg-card border border-border rounded-lg p-4">
+        <div className="bg-white border border-gray-200 rounded-lg p-4 shadow-sm">
           <div className="flex flex-wrap gap-2">
             <button
               onClick={() => setFilter('all')}
               className={`px-4 py-2 rounded-lg font-medium transition-colors ${
-                filter === 'all' ? 'bg-primary text-primary-foreground' : 'bg-secondary hover:bg-secondary/80'
+                filter === 'all' ? 'bg-blue-600 text-white' : 'bg-gray-100 hover:bg-gray-200 text-gray-700'
               }`}
             >
               Todos ({users.length})
@@ -94,7 +94,7 @@ export default function AdminUsers() {
             <button
               onClick={() => setFilter('pending')}
               className={`px-4 py-2 rounded-lg font-medium transition-colors ${
-                filter === 'pending' ? 'bg-primary text-primary-foreground' : 'bg-secondary hover:bg-secondary/80'
+                filter === 'pending' ? 'bg-blue-600 text-white' : 'bg-gray-100 hover:bg-gray-200 text-gray-700'
               }`}
             >
               Pendentes
@@ -102,7 +102,7 @@ export default function AdminUsers() {
             <button
               onClick={() => setFilter('active')}
               className={`px-4 py-2 rounded-lg font-medium transition-colors ${
-                filter === 'active' ? 'bg-primary text-primary-foreground' : 'bg-secondary hover:bg-secondary/80'
+                filter === 'active' ? 'bg-blue-600 text-white' : 'bg-gray-100 hover:bg-gray-200 text-gray-700'
               }`}
             >
               Ativos
@@ -110,7 +110,7 @@ export default function AdminUsers() {
             <button
               onClick={() => setFilter('suspended')}
               className={`px-4 py-2 rounded-lg font-medium transition-colors ${
-                filter === 'suspended' ? 'bg-primary text-primary-foreground' : 'bg-secondary hover:bg-secondary/80'
+                filter === 'suspended' ? 'bg-blue-600 text-white' : 'bg-gray-100 hover:bg-gray-200 text-gray-700'
               }`}
             >
               Suspensos

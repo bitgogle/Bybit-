@@ -150,8 +150,8 @@ export default function AdminUsers() {
                       </td>
                       <td className="py-4 px-6">{user.email}</td>
                       <td className="py-4 px-6">
-                        <p className="font-bold text-primary">R$ {user.brl_balance?.toFixed(2)}</p>
-                        <p className="text-xs text-muted-foreground">
+                        <p className="font-bold text-blue-700">R$ {user.brl_balance?.toFixed(2)}</p>
+                        <p className="text-xs text-gray-500">
                           Disponível: R$ {user.available_for_withdrawal?.toFixed(2)}
                         </p>
                       </td>

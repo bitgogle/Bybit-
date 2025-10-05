@@ -106,7 +106,7 @@ export default function AdminDashboard() {
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
             <a
               href="/admin/users"
-              className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg p-6 text-center transition-colors"
+              className="bg-blue-600 hover:bg-blue-700 text-white rounded-lg p-6 text-center transition-colors shadow-md"
             >
               <span className="text-3xl mb-2 block">👥</span>
               <p className="font-bold text-lg">Gerenciar Usuários</p>
@@ -114,7 +114,7 @@ export default function AdminDashboard() {
 
             <a
               href="/admin/transactions"
-              className="bg-accent hover:bg-accent/90 text-accent-foreground rounded-lg p-6 text-center transition-colors"
+              className="bg-blue-600 hover:bg-blue-700 text-white rounded-lg p-6 text-center transition-colors shadow-md"
             >
               <span className="text-3xl mb-2 block">💸</span>
               <p className="font-bold text-lg">Transações</p>
@@ -122,7 +122,7 @@ export default function AdminDashboard() {
 
             <a
               href="/admin/settings"
-              className="bg-secondary hover:bg-secondary/80 text-foreground rounded-lg p-6 text-center transition-colors"
+              className="bg-blue-600 hover:bg-blue-700 text-white rounded-lg p-6 text-center transition-colors shadow-md"
             >
               <span className="text-3xl mb-2 block">⚙️</span>
               <p className="font-bold text-lg">Configurações</p>

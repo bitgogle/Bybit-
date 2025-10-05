@@ -43,17 +43,17 @@ export default function AdminDashboard() {
         <div>
           <h2 className="text-xl font-bold mb-4">Usuários</h2>
           <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
-            <div className="bg-card border border-border rounded-lg p-6">
-              <p className="text-sm text-muted-foreground mb-2">Total de Usuários</p>
-              <p className="text-3xl font-bold">{stats?.users?.total || 0}</p>
+            <div className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
+              <p className="text-sm text-gray-600 mb-2">Total de Usuários</p>
+              <p className="text-3xl font-bold text-gray-900">{stats?.users?.total || 0}</p>
             </div>
-            <div className="bg-card border border-border rounded-lg p-6">
-              <p className="text-sm text-muted-foreground mb-2">Pendentes Aprovação</p>
-              <p className="text-3xl font-bold text-yellow-500">{stats?.users?.pending || 0}</p>
+            <div className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
+              <p className="text-sm text-gray-600 mb-2">Pendentes Aprovação</p>
+              <p className="text-3xl font-bold text-yellow-600">{stats?.users?.pending || 0}</p>
             </div>
-            <div className="bg-card border border-border rounded-lg p-6">
-              <p className="text-sm text-muted-foreground mb-2">Usuários Ativos</p>
-              <p className="text-3xl font-bold text-green-500">{stats?.users?.active || 0}</p>
+            <div className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
+              <p className="text-sm text-gray-600 mb-2">Usuários Ativos</p>
+              <p className="text-3xl font-bold text-green-600">{stats?.users?.active || 0}</p>
             </div>
           </div>
         </div>

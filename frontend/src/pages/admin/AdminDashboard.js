@@ -32,7 +32,7 @@ export default function AdminDashboard() {
   }
 
   return (
-    <Layout>
+    <AdminLayout>
       <div className="space-y-6">
         <div>
           <h1 className="text-3xl font-bold">Painel Administrativo</h1>

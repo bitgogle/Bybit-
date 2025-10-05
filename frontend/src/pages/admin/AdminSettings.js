@@ -264,6 +264,6 @@ export default function AdminSettings() {
           </button>
         </form>
       </div>
-    </Layout>
+    </AdminLayout>
   );
 }

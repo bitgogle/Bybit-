@@ -29,10 +29,10 @@ export default function Layout({ children }) {
   ];
 
   const adminMenuItems = [
-    { name: 'Dashboard', path: '/admin', icon: '📊' },
-    { name: 'Usuários', path: '/admin/users', icon: '👥' },
-    { name: 'Transações', path: '/admin/transactions', icon: '💸' },
-    { name: 'Configurações', path: '/admin/settings', icon: '⚙️' },
+    { name: 'Dashboard', path: '/admin' },
+    { name: 'Usuários', path: '/admin/users' },
+    { name: 'Transações', path: '/admin/transactions' },
+    { name: 'Configurações', path: '/admin/settings' },
   ];
 
   const menuItems = isAdmin ? adminMenuItems : userMenuItems;

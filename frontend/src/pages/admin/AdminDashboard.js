@@ -89,13 +89,13 @@ export default function AdminDashboard() {
         <div>
           <h2 className="text-xl font-bold mb-4">Transações</h2>
           <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
-            <div className="bg-card border border-border rounded-lg p-6">
-              <p className="text-sm text-muted-foreground mb-2">Depósitos Pendentes</p>
-              <p className="text-3xl font-bold text-yellow-500">{stats?.transactions?.pending_deposits || 0}</p>
+            <div className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
+              <p className="text-sm text-gray-600 mb-2">Depósitos Pendentes</p>
+              <p className="text-3xl font-bold text-yellow-600">{stats?.transactions?.pending_deposits || 0}</p>
             </div>
-            <div className="bg-card border border-border rounded-lg p-6">
-              <p className="text-sm text-muted-foreground mb-2">Saques Pendentes</p>
-              <p className="text-3xl font-bold text-orange-500">{stats?.transactions?.pending_withdrawals || 0}</p>
+            <div className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
+              <p className="text-sm text-gray-600 mb-2">Saques Pendentes</p>
+              <p className="text-3xl font-bold text-orange-600">{stats?.transactions?.pending_withdrawals || 0}</p>
             </div>
           </div>
         </div>

@@ -75,7 +75,7 @@ export default function AdminTransactions() {
   };
 
   return (
-    <Layout>
+    <AdminLayout>
       <div className="space-y-6">
         <div>
           <h1 className="text-3xl font-bold">Gerenciar Transações</h1>

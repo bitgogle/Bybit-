@@ -1,5 +1,5 @@
 import React, { useState, useEffect } from 'react';
-import Layout from '@/components/Layout';
+import AdminLayout from '@/components/AdminLayout';
 import { settingsAPI, adminAPI } from '@/lib/api';
 
 export default function AdminSettings() {

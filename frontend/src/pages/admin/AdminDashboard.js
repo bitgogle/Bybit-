@@ -23,11 +23,11 @@ export default function AdminDashboard() {
 
   if (loading) {
     return (
-      <Layout>
+      <AdminLayout>
         <div className="flex items-center justify-center h-64">
-          <div className="text-primary text-xl">Carregando...</div>
+          <div className="text-blue-600 text-xl">Carregando...</div>
         </div>
-      </Layout>
+      </AdminLayout>
     );
   }
 

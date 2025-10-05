@@ -107,26 +107,47 @@ export default function Dashboard() {
         <div className="grid grid-cols-1 md:grid-cols-3 gap-4">
           <a
             href="/deposit"
-            className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg p-6 text-center transition-colors"
+            className="bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg p-6 flex items-center gap-4 transition-colors group"
           >
-            <span className="text-3xl mb-2 block">💳</span>
-            <p className="font-bold text-lg">Depositar</p>
+            <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
+              <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M11 9h2V6h3V4h-3V1h-2v3H8v2h3v3zm-4 9c-1.1 0-1.99.9-1.99 2S5.9 22 7 22s2-.9 2-2-.9-2-2-2zm10 0c-1.1 0-1.99.9-1.99 2s.89 2 1.99 2 2-.9 2-2-.9-2-2-2zm-9.83-3.25l.03-.12.9-1.63h7.45c.75 0 1.41-.41 1.75-1.03l3.86-7.01L19.42 4h-.01l-1.1 2-2.76 5H8.53l-.13-.27L6.16 6l-.95-2-.94-2H1v2h2l3.6 7.59-1.35 2.45c-.16.28-.25.61-.25.96 0 1.1.9 2 2 2h12v-2H7.42c-.13 0-.25-.11-.25-.25z"/>
+              </svg>
+            </div>
+            <div className="text-left">
+              <p className="font-bold text-lg">Depositar</p>
+              <p className="text-sm opacity-90">Adicionar fundos</p>
+            </div>
           </a>
 
           <a
             href="/investments"
-            className="bg-accent hover:bg-accent/90 text-accent-foreground rounded-lg p-6 text-center transition-colors"
+            className="bg-accent hover:bg-accent/90 text-accent-foreground rounded-lg p-6 flex items-center gap-4 transition-colors group"
           >
-            <span className="text-3xl mb-2 block">💰</span>
-            <p className="font-bold text-lg">Investir</p>
+            <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
+              <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M16 6l2.29 2.29-4.88 4.88-4-4L2 16.59 3.41 18l6-6 4 4 6.3-6.29L22 12V6z"/>
+              </svg>
+            </div>
+            <div className="text-left">
+              <p className="font-bold text-lg">Investir</p>
+              <p className="text-sm opacity-90">Começar a lucrar</p>
+            </div>
           </a>
 
           <a
             href="/withdrawal"
-            className="bg-green-600 hover:bg-green-700 text-white rounded-lg p-6 text-center transition-colors"
+            className="bg-green-600 hover:bg-green-700 text-white rounded-lg p-6 flex items-center gap-4 transition-colors group"
           >
-            <span className="text-3xl mb-2 block">🏦</span>
-            <p className="font-bold text-lg">Sacar</p>
+            <div className="w-12 h-12 bg-white/20 rounded-lg flex items-center justify-center group-hover:scale-110 transition-transform">
+              <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+                <path d="M11.8 10.9c-2.27-.59-3-1.2-3-2.15 0-1.09 1.01-1.85 2.7-1.85 1.78 0 2.44.85 2.5 2.1h2.21c-.07-1.72-1.12-3.3-3.21-3.81V3h-3v2.16c-1.94.42-3.5 1.68-3.5 3.61 0 2.31 1.91 3.46 4.7 4.13 2.5.6 3 1.48 3 2.41 0 .69-.49 1.79-2.7 1.79-2.06 0-2.87-.92-2.98-2.1h-2.2c.12 2.19 1.76 3.42 3.68 3.83V21h3v-2.15c1.95-.37 3.5-1.5 3.5-3.55 0-2.84-2.43-3.81-4.7-4.4z"/>
+              </svg>
+            </div>
+            <div className="text-left">
+              <p className="font-bold text-lg">Sacar</p>
+              <p className="text-sm opacity-90">Retirar fundos</p>
+            </div>
           </a>
         </div>
 

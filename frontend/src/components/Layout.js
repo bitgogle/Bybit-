@@ -63,7 +63,7 @@ export default function Layout({ children }) {
                     : 'hover:bg-secondary text-foreground'
                 }`}
               >
-                <span className="text-xl">{item.icon}</span>
+                {menuIcons[item.path]}
                 <span className="font-medium">{item.name}</span>
               </Link>
             ))}

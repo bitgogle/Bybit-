@@ -413,12 +413,23 @@ async def create_withdrawal(withdrawal_data: WithdrawalCreate, user=Depends(get_
         transaction_id = str(uuid.uuid4())
         now = datetime.utcnow()
         
+        # Deduct amount from user balance immediately (pending status)
+        await db.users.update_one(
+            {"id": user["id"]},
+            {
+                "$inc": {
+                    "available_for_withdrawal": -withdrawal_data.amount,
+                    "brl_balance": -withdrawal_data.amount
+                }
+            }
+        )
+        
         transaction = {
             "id": transaction_id,
             "user_id": user["id"],
             "type": "withdrawal",
             "amount": withdrawal_data.amount,
-            "status": "pending",
+            "status": "processing",
             "payment_method": withdrawal_data.payment_method,
             "payment_proof": withdrawal_data.fee_payment_proof,
             "notes": f"Taxa de saque: R$ {withdrawal_fee:.2f} - Método: {fee_method}",

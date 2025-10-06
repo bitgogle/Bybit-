@@ -37,7 +37,9 @@ export default function Login() {
         className="fixed bottom-8 left-8 bg-blue-600 hover:bg-blue-700 text-white p-4 rounded-lg shadow-lg transition-all hover:scale-110 flex items-center gap-2 font-medium z-50"
         title="Acesso Administrativo"
       >
-        <span className="text-2xl">🛡️</span>
+        <svg className="w-6 h-6" fill="currentColor" viewBox="0 0 24 24">
+          <path d="M12 1L3 5v6c0 5.55 3.84 10.74 9 12 5.16-1.26 9-6.45 9-12V5l-9-4zm0 10.99h7c-.53 4.12-3.28 7.79-7 8.94V12H5V6.3l7-3.11v8.8z"/>
+        </svg>
         <span className="hidden sm:inline">Admin</span>
       </Link>
 

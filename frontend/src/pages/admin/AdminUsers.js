@@ -64,12 +64,12 @@ export default function AdminUsers() {
         ...balanceForm,
         amount: parseFloat(balanceForm.amount)
       });
-      alert('Saldo ajustado com sucesso!');
+      toast.success('Saldo ajustado com sucesso! Alterações aplicadas.');
       setShowBalanceModal(false);
       setBalanceForm({ adjustment_type: 'add', balance_type: 'brl_balance', amount: '', notes: '' });
       loadUsers();
     } catch (error) {
-      alert(error.response?.data?.detail || 'Erro ao ajustar saldo');
+      toast.error(error.response?.data?.detail || 'Erro ao ajustar saldo');
     }
   };
 

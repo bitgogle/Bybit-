@@ -226,8 +226,11 @@ class AdminApprovalTester:
         
         deposit_response = self.make_request("POST", "/deposits", deposit_data, token=user_token)
         
-        if not deposit_response or deposit_response.status_code != 200:
-            self.log_result(test_name, False, "Failed to create deposit request", deposit_response.text if deposit_response else "No response")
+        if not deposit_response:
+            self.log_result(test_name, False, "Failed to create deposit request - No response from server")
+            return False
+        elif deposit_response.status_code != 200:
+            self.log_result(test_name, False, f"Failed to create deposit request - Status: {deposit_response.status_code}", deposit_response.text)
             return False
         
         transaction_id = deposit_response.json().get("transaction", {}).get("id")

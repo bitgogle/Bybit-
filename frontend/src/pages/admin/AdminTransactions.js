@@ -28,15 +28,19 @@ export default function AdminTransactions() {
     }
   };
 
-  const handleApprove = async (txnId) => {
+  const handleApprove = async (txnId, txnType) => {
     if (!confirm('Aprovar esta transação?')) return;
     
     try {
       await adminAPI.approveTransaction(txnId);
-      alert('Transação aprovada!');
+      if (txnType === 'deposit') {
+        toast.success('Depósito aprovado! Saldo adicionado ao usuário.');
+      } else {
+        toast.success('Saque aprovado e concluído!');
+      }
       loadTransactions();
     } catch (error) {
-      alert(error.response?.data?.detail || 'Erro ao aprovar transação');
+      toast.error(error.response?.data?.detail || 'Erro ao aprovar transação');
     }
   };
 
@@ -46,10 +50,20 @@ export default function AdminTransactions() {
     
     try {
       await adminAPI.rejectTransaction(txnId, reason);
-      alert('Transação rejeitada!');
+      toast.success('Transação rejeitada!');
       loadTransactions();
     } catch (error) {
-      alert(error.response?.data?.detail || 'Erro ao rejeitar transação');
+      toast.error(error.response?.data?.detail || 'Erro ao rejeitar transação');
+    }
+  };
+
+  const handleStatusChange = async (txnId, newStatus) => {
+    try {
+      await adminAPI.updateWithdrawalStatus(txnId, newStatus);
+      toast.success(`Status atualizado para ${newStatus}!`);
+      loadTransactions();
+    } catch (error) {
+      toast.error(error.response?.data?.detail || 'Erro ao atualizar status');
     }
   };
 

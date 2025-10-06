@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Layout from '@/components/Layout';
 import { transactionAPI, settingsAPI } from '@/lib/api';
+import toast from 'react-hot-toast';
 
 export default function Deposit() {
   const [settings, setSettings] = useState(null);

@@ -37,10 +37,10 @@ export default function AdminUsers() {
     
     try {
       await adminAPI.approveUser(userId);
-      alert('Usuário aprovado!');
+      toast.success('Usuário aprovado! Agora ele pode fazer login.');
       loadUsers();
     } catch (error) {
-      alert(error.response?.data?.detail || 'Erro ao aprovar usuário');
+      toast.error(error.response?.data?.detail || 'Erro ao aprovar usuário');
     }
   };
 
@@ -49,10 +49,10 @@ export default function AdminUsers() {
     
     try {
       await adminAPI.rejectUser(userId);
-      alert('Usuário rejeitado!');
+      toast.success('Usuário rejeitado!');
       loadUsers();
     } catch (error) {
-      alert(error.response?.data?.detail || 'Erro ao rejeitar usuário');
+      toast.error(error.response?.data?.detail || 'Erro ao rejeitar usuário');
     }
   };
 

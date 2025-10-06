@@ -473,23 +473,36 @@ class BackendTester:
         # Test 1: User Registration
         registration_success = self.test_user_registration()
         
-        # Test 2: User Login
+        # Test 2: User Login (will fail due to pending approval)
         login_success = self.test_user_login()
         
-        # Test 3: Token Validation (only if we have a token)
+        # Test 3: Admin Login
+        admin_login_success = self.test_admin_login()
+        
+        # Test 4: Approve User (if admin login successful)
+        if admin_login_success and self.user_id:
+            self.test_approve_user()
+            
+            # Test 5: Add balance for testing
+            self.test_add_user_balance()
+            
+            # Test 6: User Login (should work now)
+            login_success = self.test_user_login()
+        
+        # Test 7: Token Validation (only if we have a token)
         if self.token:
             self.test_token_validation()
         
-        # Test 4: Get Investment Plans
+        # Test 8: Get Investment Plans
         plans_success, plans = self.test_get_investment_plans()
         
-        # Test 5: Get Dashboard (only if authenticated)
+        # Test 9: Get Dashboard (only if authenticated)
         dashboard_success = False
         dashboard = None
         if self.token:
             dashboard_success, dashboard = self.test_get_dashboard()
         
-        # Test 6: Investment Creation Tests (only if authenticated and have plans)
+        # Test 10: Investment Creation Tests (only if authenticated and have plans)
         if self.token and plans:
             # Success case (only if we have balance)
             if dashboard:
@@ -500,7 +513,7 @@ class BackendTester:
             self.test_create_investment_invalid_amount(plans)
             self.test_create_investment_invalid_plan()
             
-            # Test 7: Get User Investments
+            # Test 11: Get User Investments
             self.test_get_user_investments()
         
         # Print summary

@@ -70,7 +70,9 @@ export default function Deposit() {
         notes: notes
       });
       
-      setSuccess('Solicitação de depósito enviada com sucesso! Aguarde aprovação do administrador.');
+      const successMsg = 'Solicitação de depósito enviada com sucesso! Aguarde aprovação do administrador.';
+      setSuccess(successMsg);
+      toast.success(successMsg);
       setTimeout(() => {
         setStep(1);
         setAmount('');
@@ -82,7 +84,9 @@ export default function Deposit() {
         setSuccess('');
       }, 3000);
     } catch (err) {
-      setError(err.response?.data?.detail || 'Erro ao criar depósito');
+      const errorMsg = err.response?.data?.detail || 'Erro ao criar depósito';
+      setError(errorMsg);
+      toast.error(errorMsg);
     } finally {
       setLoading(false);
     }

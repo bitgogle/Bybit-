@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import Layout from '@/components/Layout';
 import { investmentAPI, userAPI } from '@/lib/api';
+import toast from 'react-hot-toast';
 
 export default function Investments() {
   const [plans, setPlans] = useState([]);

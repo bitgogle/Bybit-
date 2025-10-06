@@ -373,6 +373,94 @@ class BackendTester:
             self.log_result(test_name, False, f"Failed to get investments with status {response.status_code}", response.text)
             return False
     
+    def test_admin_login(self):
+        """Test admin login"""
+        test_name = "Admin Login"
+        
+        admin_credentials = {
+            "email": "skidolynx@gmail.com",
+            "password": "@Mypetname9"
+        }
+        
+        response = self.make_request("POST", "/auth/admin/login", admin_credentials)
+        
+        if response is None:
+            self.log_result(test_name, False, "Request failed - connection error")
+            return False
+            
+        if response.status_code == 200:
+            data = response.json()
+            self.admin_token = data.get("token")
+            self.log_result(test_name, True, "Admin login successful")
+            return True
+        else:
+            self.log_result(test_name, False, f"Admin login failed with status {response.status_code}", response.text)
+            return False
+    
+    def test_approve_user(self):
+        """Test approving the test user"""
+        test_name = "Approve Test User"
+        
+        if not self.admin_token or not self.user_id:
+            self.log_result(test_name, False, "Admin token or user ID not available")
+            return False
+            
+        # Temporarily store current token and use admin token
+        original_token = self.token
+        self.token = self.admin_token
+        
+        response = self.make_request("PUT", f"/admin/users/{self.user_id}/approve")
+        
+        # Restore original token
+        self.token = original_token
+        
+        if response is None:
+            self.log_result(test_name, False, "Request failed - connection error")
+            return False
+            
+        if response.status_code == 200:
+            self.log_result(test_name, True, "User approved successfully")
+            return True
+        else:
+            self.log_result(test_name, False, f"User approval failed with status {response.status_code}", response.text)
+            return False
+    
+    def test_add_user_balance(self):
+        """Test adding balance to user for testing investments"""
+        test_name = "Add User Balance for Testing"
+        
+        if not self.admin_token or not self.user_id:
+            self.log_result(test_name, False, "Admin token or user ID not available")
+            return False
+            
+        # Temporarily store current token and use admin token
+        original_token = self.token
+        self.token = self.admin_token
+        
+        balance_data = {
+            "user_id": self.user_id,
+            "adjustment_type": "add",
+            "amount": 1000.0,
+            "balance_type": "available_for_withdrawal",
+            "notes": "Test balance for investment testing"
+        }
+        
+        response = self.make_request("POST", f"/admin/users/{self.user_id}/balance", balance_data)
+        
+        # Restore original token
+        self.token = original_token
+        
+        if response is None:
+            self.log_result(test_name, False, "Request failed - connection error")
+            return False
+            
+        if response.status_code == 200:
+            self.log_result(test_name, True, "Test balance added successfully (R$ 1000.00)")
+            return True
+        else:
+            self.log_result(test_name, False, f"Balance adjustment failed with status {response.status_code}", response.text)
+            return False
+    
     def run_all_tests(self):
         """Run all backend tests"""
         print("=" * 60)

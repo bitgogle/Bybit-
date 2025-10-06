@@ -95,6 +95,9 @@ export default function Layout({ children }) {
         <div
           className="fixed inset-0 bg-black/50 z-40 lg:hidden"
           onClick={() => setSidebarOpen(false)}
+          onTouchEnd={() => setSidebarOpen(false)}
+          role="button"
+          aria-label="Close sidebar"
         />
       )}
 

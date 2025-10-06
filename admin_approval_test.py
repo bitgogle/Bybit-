@@ -62,7 +62,8 @@ class AdminApprovalTester:
                 
             return response
         except requests.exceptions.RequestException as e:
-            return None, str(e)
+            print(f"Request exception: {str(e)}")
+            return None
     
     def admin_login(self):
         """Login as admin"""

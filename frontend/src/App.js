@@ -77,6 +77,23 @@ function App() {
   return (
     <AuthProvider>
       <BrowserRouter>
+        <Toaster 
+          position="top-right"
+          toastOptions={{
+            duration: 3000,
+            style: {
+              background: '#0F0F0F',
+              color: '#fff',
+              border: '1px solid #FFD700',
+            },
+            success: {
+              iconTheme: {
+                primary: '#FFD700',
+                secondary: '#0F0F0F',
+              },
+            },
+          }}
+        />
         <AppRoutes />
       </BrowserRouter>
     </AuthProvider>

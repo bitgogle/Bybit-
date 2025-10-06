@@ -516,6 +516,9 @@ class BackendTester:
             
             # Test 11: Get User Investments
             self.test_get_user_investments()
+            
+            # Test 12: Verify Balance Deduction
+            self.test_balance_deduction_verification()
         
         # Print summary
         print("\n" + "=" * 60)

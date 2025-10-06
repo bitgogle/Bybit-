@@ -567,6 +567,7 @@ class AdminApprovalTester:
         
         # Admin adds balance
         balance_data = {
+            "user_id": user["user_id"],
             "adjustment_type": "add",
             "amount": 1000.0,
             "balance_type": "brl_balance",

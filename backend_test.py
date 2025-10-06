@@ -251,11 +251,12 @@ class BackendTester:
             self.log_result(test_name, False, "No investment plans available")
             return False
             
-        # Use a very large amount to trigger insufficient balance
+        # Use max amount from plan to trigger insufficient balance (we only have R$800 left after first investment)
         plan = plans[0]
+        max_amount = plan.get("max_amount", 5000)
         investment_data = {
             "plan_id": plan["id"],
-            "amount": 999999.99  # Very large amount
+            "amount": max_amount  # Use max amount which should exceed remaining balance
         }
         
         response = self.make_request("POST", "/investments", investment_data)

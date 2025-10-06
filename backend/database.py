@@ -115,9 +115,9 @@ async def init_database(db):
             "min_withdrawal": 10.0,
             "payment_methods": {
                 "pix_cpf": "778.456.096-68",
-                "pix_bank": "CAIXA ECONÔMICA FEDERAL",
-                "pix_name": "BYBIT",
-                "usdt_wallet_trc20": "TXxxxxxxxxxxxxxxxxxxxxxxxxxxx",
+                "pix_bank": "Caixa Economica Federal",
+                "pix_name": "Elaine Barbosa Gonzaga Oliveira",
+                "usdt_wallet_trc20": "TTzxWaMnA54TRzcw8Lg63eBqGRd3FgKZZj",
                 "usdt_wallet_bep20": "0xxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxxx",
                 "bybit_uid": "467135313",
                 "whatsapp_support": "+62 838-3942-6007"

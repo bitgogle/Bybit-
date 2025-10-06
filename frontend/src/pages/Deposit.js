@@ -32,11 +32,14 @@ export default function Deposit() {
 
   const handleConvert = () => {
     if (!amount || parseFloat(amount) < 200) {
-      setError('Valor mínimo de depósito é R$ 200,00');
+      const errorMsg = 'Valor mínimo de depósito é R$ 200,00';
+      setError(errorMsg);
+      toast.error(errorMsg);
       return;
     }
     const usdtValue = (parseFloat(amount) / USDT_RATE).toFixed(6);
     setUsdtAmount(usdtValue);
+    toast.success('Conversão realizada com sucesso!');
   };
 
   const handleFileChange = (e) => {

@@ -111,11 +111,14 @@ backend:
     file: "/app/backend/server.py"
     stuck_count: 0
     priority: "high"
-    needs_retesting: true
+    needs_retesting: false
     status_history:
       - working: true
         agent: "main"
         comment: "Investment creation endpoint exists at /api/investments with proper validation for insufficient balance, invalid amount range, and plan not found. Need to verify it works with new frontend flow."
+      - working: true
+        agent: "testing"
+        comment: "COMPREHENSIVE BACKEND TESTING COMPLETED - All 15 tests passed (100% success rate). Verified: User registration/login flow, admin approval process, JWT token validation, investment plans retrieval, dashboard access, investment creation (success case with R$200 investment), error handling (insufficient balance, invalid amounts, invalid plan ID), user investments retrieval, and balance deduction verification (R$1000 → R$800 available, R$200 invested). All API endpoints working correctly with proper authentication, validation, and business logic."
 
 frontend:
   - task: "Investment Confirmation Modal and Toast Alerts"

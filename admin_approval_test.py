@@ -303,7 +303,7 @@ class AdminApprovalTester:
         # Create deposit request
         deposit_data = {
             "amount": 300.0,
-            "payment_method": "PIX",
+            "payment_method": "pix",
             "payment_proof": "test_proof_deposit_rejection.jpg",
             "notes": "Test deposit for rejection testing"
         }

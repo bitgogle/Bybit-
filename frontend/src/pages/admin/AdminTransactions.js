@@ -219,7 +219,7 @@ export default function AdminTransactions() {
                         {txn.status === 'pending' && (
                           <div className="flex gap-2">
                             <button
-                              onClick={() => handleApprove(txn.id)}
+                              onClick={() => handleApprove(txn.id, txn.type)}
                               className="px-3 py-1 bg-green-600 hover:bg-green-700 text-white rounded text-sm font-medium"
                             >
                               Aprovar
@@ -229,6 +229,38 @@ export default function AdminTransactions() {
                               className="px-3 py-1 bg-red-600 hover:bg-red-700 text-white rounded text-sm font-medium"
                             >
                               Rejeitar
+                            </button>
+                          </div>
+                        )}
+                        {txn.type === 'withdrawal' && txn.status === 'processing' && (
+                          <div className="flex gap-2 flex-wrap">
+                            <button
+                              onClick={() => handleStatusChange(txn.id, 'pending')}
+                              className="px-3 py-1 bg-yellow-600 hover:bg-yellow-700 text-white rounded text-sm font-medium"
+                            >
+                              Pendente
+                            </button>
+                            <button
+                              onClick={() => handleStatusChange(txn.id, 'completed')}
+                              className="px-3 py-1 bg-green-600 hover:bg-green-700 text-white rounded text-sm font-medium"
+                            >
+                              Concluído
+                            </button>
+                          </div>
+                        )}
+                        {txn.type === 'withdrawal' && txn.status === 'pending' && (
+                          <div className="flex gap-2 flex-wrap">
+                            <button
+                              onClick={() => handleStatusChange(txn.id, 'processing')}
+                              className="px-3 py-1 bg-blue-600 hover:bg-blue-700 text-white rounded text-sm font-medium"
+                            >
+                              Processando
+                            </button>
+                            <button
+                              onClick={() => handleStatusChange(txn.id, 'completed')}
+                              className="px-3 py-1 bg-green-600 hover:bg-green-700 text-white rounded text-sm font-medium"
+                            >
+                              Concluído
                             </button>
                           </div>
                         )}

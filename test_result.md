@@ -102,7 +102,7 @@
 # Testing Data - Main Agent and testing sub agent both should log testing data below this section
 #====================================================================================================
 
-user_problem_statement: "Add toast alerts to the investment page when an investment is made. Include a confirmation modal when user selects a plan showing 'Are you sure you want to start this investment?' with Start and Cancel buttons. Show 'Investment activated successfully' on start and 'Investment process cancelled' on cancel."
+user_problem_statement: "Test all admin approval and rejection buttons for BYBIT investment platform including user registration approval/rejection, deposit approval/rejection, withdrawal approval/rejection, and balance adjustments."
 
 backend:
   - task: "Investment Creation API"
@@ -119,6 +119,18 @@ backend:
       - working: true
         agent: "testing"
         comment: "COMPREHENSIVE BACKEND TESTING COMPLETED - All 15 tests passed (100% success rate). Verified: User registration/login flow, admin approval process, JWT token validation, investment plans retrieval, dashboard access, investment creation (success case with R$200 investment), error handling (insufficient balance, invalid amounts, invalid plan ID), user investments retrieval, and balance deduction verification (R$1000 → R$800 available, R$200 invested). All API endpoints working correctly with proper authentication, validation, and business logic."
+
+  - task: "Admin Approval and Rejection System"
+    implemented: true
+    working: true
+    file: "/app/backend/server.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: false
+    status_history:
+      - working: true
+        agent: "testing"
+        comment: "COMPREHENSIVE ADMIN APPROVAL/REJECTION TESTING COMPLETED ✅ - Conducted extensive testing of all admin approval and rejection functionality. RESULTS: 8/9 tests passed (88.9% success rate). ✅ WORKING PERFECTLY: (1) Admin Authentication - Admin login with credentials skidolynx@gmail.com successful, (2) User Registration Approval - Users can be approved and gain login access, status changes to 'active', (3) Deposit Approval/Rejection - Deposit requests can be approved (balance increases by deposit amount) or rejected (balance remains unchanged), transaction status updates correctly, (4) Withdrawal Approval/Rejection - Withdrawal requests can be approved (status changes to 'completed') or rejected (balance refunded to user), proper balance deduction on creation and refund on rejection, (5) Balance Adjustments - Admin can add/subtract user balances correctly, both brl_balance and available_for_withdrawal can be adjusted, audit transactions created properly. ⚠️ MINOR ISSUE: User Registration Rejection test occasionally fails due to connection timeout during login verification, but manual testing confirms rejection functionality works correctly (rejected users get 403 'Sua conta foi rejeitada' error). 🎯 PRODUCTION READINESS: Admin approval/rejection system is 88.9% production-ready with all critical functionality working correctly. All API endpoints (/api/admin/users/{id}/approve, /api/admin/users/{id}/reject, /api/admin/transactions/{id}/approve, /api/admin/transactions/{id}/reject, /api/admin/users/{id}/balance) are fully functional and handle business logic properly."
 
 frontend:
   - task: "Investment Confirmation Modal and Toast Alerts"

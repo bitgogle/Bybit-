@@ -373,8 +373,14 @@ class AdminApprovalTester:
             return False
         
         # Also add to brl_balance
-        balance_data["balance_type"] = "brl_balance"
-        balance_response2 = self.make_request("POST", f"/admin/users/{user['user_id']}/balance", balance_data)
+        balance_data_brl = {
+            "user_id": user["user_id"],
+            "adjustment_type": "add",
+            "amount": 1000.0,
+            "balance_type": "brl_balance",
+            "notes": "Test balance for withdrawal testing"
+        }
+        balance_response2 = self.make_request("POST", f"/admin/users/{user['user_id']}/balance", balance_data_brl)
         if not balance_response2 or balance_response2.status_code != 200:
             self.log_result(test_name, False, "Failed to add brl_balance to test user")
             return False
@@ -463,8 +469,14 @@ class AdminApprovalTester:
             return False
         
         # Also add to brl_balance
-        balance_data["balance_type"] = "brl_balance"
-        balance_response2 = self.make_request("POST", f"/admin/users/{user['user_id']}/balance", balance_data)
+        balance_data_brl = {
+            "user_id": user["user_id"],
+            "adjustment_type": "add",
+            "amount": 1000.0,
+            "balance_type": "brl_balance",
+            "notes": "Test balance for withdrawal testing"
+        }
+        balance_response2 = self.make_request("POST", f"/admin/users/{user['user_id']}/balance", balance_data_brl)
         if not balance_response2 or balance_response2.status_code != 200:
             self.log_result(test_name, False, "Failed to add brl_balance to test user")
             return False

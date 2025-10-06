@@ -101,3 +101,49 @@
 #====================================================================================================
 # Testing Data - Main Agent and testing sub agent both should log testing data below this section
 #====================================================================================================
+
+user_problem_statement: "Add toast alerts to the investment page when an investment is made. Include a confirmation modal when user selects a plan showing 'Are you sure you want to start this investment?' with Start and Cancel buttons. Show 'Investment activated successfully' on start and 'Investment process cancelled' on cancel."
+
+backend:
+  - task: "Investment Creation API"
+    implemented: true
+    working: true
+    file: "/app/backend/server.py"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: true
+        agent: "main"
+        comment: "Investment creation endpoint exists at /api/investments with proper validation for insufficient balance, invalid amount range, and plan not found. Need to verify it works with new frontend flow."
+
+frontend:
+  - task: "Investment Confirmation Modal and Toast Alerts"
+    implemented: true
+    working: "NA"
+    file: "/app/frontend/src/pages/Investments.js"
+    stuck_count: 0
+    priority: "high"
+    needs_retesting: true
+    status_history:
+      - working: "NA"
+        agent: "main"
+        comment: "Implemented two-modal flow: (1) Amount input modal with plan selection, (2) Confirmation modal with Start/Cancel buttons. Added toast notifications for success (Investment activated successfully), cancel (Investment process cancelled), and error scenarios (insufficient balance, invalid amount). Mobile-first responsive design already in place."
+
+metadata:
+  created_by: "main_agent"
+  version: "1.0"
+  test_sequence: 0
+  run_ui: false
+
+test_plan:
+  current_focus:
+    - "Investment Creation API"
+    - "Investment Confirmation Modal and Toast Alerts"
+  stuck_tasks: []
+  test_all: false
+  test_priority: "high_first"
+
+agent_communication:
+  - agent: "main"
+    message: "Added investment confirmation modal and toast alerts feature. The flow is: User selects plan → enters amount → sees confirmation modal with plan details → clicks Start (creates investment + success toast) or Cancel (closes modal + cancel toast). Error scenarios show appropriate error toasts (insufficient balance, invalid amount). Ready for backend testing to verify investment creation API works correctly with new frontend flow."

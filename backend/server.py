@@ -707,8 +707,20 @@ async def reject_transaction(transaction_id: str, reason: Optional[str] = None, 
         if not transaction:
             raise HTTPException(status_code=404, detail="Transação não encontrada")
         
-        if transaction["status"] != "pending":
+        if transaction["status"] in ["approved", "rejected", "completed"]:
             raise HTTPException(status_code=400, detail="Transação já processada")
+        
+        # If rejecting a withdrawal, refund the amount
+        if transaction["type"] == "withdrawal":
+            await db.users.update_one(
+                {"id": transaction["user_id"]},
+                {
+                    "$inc": {
+                        "available_for_withdrawal": transaction["amount"],
+                        "brl_balance": transaction["amount"]
+                    }
+                }
+            )
         
         await db.transactions.update_one(
             {"id": transaction_id},
@@ -728,6 +740,39 @@ async def reject_transaction(transaction_id: str, reason: Optional[str] = None, 
     except Exception as e:
         logger.error(f"Reject transaction error: {str(e)}")
         raise HTTPException(status_code=500, detail="Erro ao rejeitar transação")
+
+@api_router.put("/admin/transactions/{transaction_id}/status")
+async def update_withdrawal_status(transaction_id: str, status: str, admin=Depends(get_admin_user)):
+    """Update withdrawal status (processing, pending, completed)"""
+    try:
+        transaction = await db.transactions.find_one({"id": transaction_id})
+        if not transaction:
+            raise HTTPException(status_code=404, detail="Transação não encontrada")
+        
+        if transaction["type"] != "withdrawal":
+            raise HTTPException(status_code=400, detail="Apenas saques podem ter status alterado")
+        
+        valid_statuses = ["processing", "pending", "completed"]
+        if status not in valid_statuses:
+            raise HTTPException(status_code=400, detail="Status inválido")
+        
+        await db.transactions.update_one(
+            {"id": transaction_id},
+            {
+                "$set": {
+                    "status": status,
+                    "processed_by": admin["id"],
+                    "processed_at": datetime.utcnow()
+                }
+            }
+        )
+        
+        return {"message": f"Status atualizado para {status}"}
+    except HTTPException as e:
+        raise e
+    except Exception as e:
+        logger.error(f"Update status error: {str(e)}")
+        raise HTTPException(status_code=500, detail="Erro ao atualizar status")
 
 @api_router.put("/admin/settings")
 async def update_platform_settings(settings_data: PlatformSettings, admin=Depends(get_admin_user)):

@@ -407,7 +407,7 @@ class AdminApprovalTester:
         # Create withdrawal request
         withdrawal_data = {
             "amount": 200.0,
-            "payment_method": "PIX",
+            "payment_method": "pix",
             "fee_payment_proof": "test_proof_withdrawal_approval.jpg"
         }
         

@@ -613,6 +613,7 @@ class AdminApprovalTester:
         
         # Add initial balance first
         initial_balance_data = {
+            "user_id": user["user_id"],
             "adjustment_type": "add",
             "amount": 1000.0,
             "balance_type": "brl_balance",

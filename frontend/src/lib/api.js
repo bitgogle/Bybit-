@@ -82,6 +82,7 @@ export const adminAPI = {
   getTransactions: (type, status) => api.get('/admin/transactions', { params: { type, status } }),
   approveTransaction: (txnId) => api.put(`/admin/transactions/${txnId}/approve`),
   rejectTransaction: (txnId, reason) => api.put(`/admin/transactions/${txnId}/reject`, null, { params: { reason } }),
+  updateWithdrawalStatus: (txnId, status) => api.put(`/admin/transactions/${txnId}/status`, null, { params: { status } }),
   updateSettings: (data) => api.put('/admin/settings', data),
   getInvestments: () => api.get('/admin/investments'),
 };

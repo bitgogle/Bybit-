@@ -18,7 +18,7 @@ export default function AdminLayout({ children }) {
   return (
     <div className="min-h-screen bg-white flex">
       {/* Sidebar - Blue Theme */}
-      <aside className={`fixed lg:static inset-y-0 left-0 z-50 w-64 bg-blue-900 border-r border-blue-800 transform ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'} lg:translate-x-0 transition-transform duration-300`}>
+      <aside className={`fixed lg:static inset-y-0 left-0 z-50 w-64 bg-blue-900/95 backdrop-blur-sm border-r border-blue-800 transform ${sidebarOpen ? 'translate-x-0' : '-translate-x-full'} lg:translate-x-0 transition-transform duration-300`}>
         <div className="h-full flex flex-col">
           {/* Logo */}
           <div className="p-6 border-b border-blue-800 bg-blue-950">

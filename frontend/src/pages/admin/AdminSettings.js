@@ -91,8 +91,8 @@ export default function AdminSettings() {
 
         <form onSubmit={handleSubmit} className="space-y-6">
           {/* Withdrawal Settings */}
-          <div className="bg-card border border-border rounded-lg p-6">
-            <h2 className="font-bold text-lg mb-4">Configurações de Saque</h2>
+          <div className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
+            <h2 className="font-bold text-lg mb-4 text-gray-900">Configurações de Saque</h2>
             <div className="space-y-4">
               <div>
                 <label className="block text-sm font-medium mb-2">Taxa de Saque (R$)</label>

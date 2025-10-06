@@ -647,6 +647,7 @@ class AdminApprovalTester:
         
         # Admin subtracts balance
         balance_data = {
+            "user_id": user["user_id"],
             "adjustment_type": "subtract",
             "amount": 500.0,
             "balance_type": "brl_balance",

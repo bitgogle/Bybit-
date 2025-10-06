@@ -168,6 +168,10 @@ class AdminApprovalTester:
             return False
             
         if response.status_code == 200:
+            # Small delay to ensure database update is complete
+            import time
+            time.sleep(1)
+            
             # Verify user cannot login (should get rejected status)
             login_response = self.make_request("POST", "/auth/login", {
                 "email": user["email"],

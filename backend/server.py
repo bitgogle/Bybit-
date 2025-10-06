@@ -733,6 +733,9 @@ async def reject_transaction(transaction_id: str, reason: Optional[str] = None, 
                     }
                 }
             )
+            logger.info(f"Withdrawal {transaction_id} rejected by admin {admin['email']} - R$ {transaction['amount']} refunded to user {transaction['user_id']}")
+        else:
+            logger.info(f"{transaction['type'].capitalize()} {transaction_id} rejected by admin {admin['email']}")
         
         await db.transactions.update_one(
             {"id": transaction_id},

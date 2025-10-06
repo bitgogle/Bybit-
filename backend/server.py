@@ -535,7 +535,8 @@ async def approve_user(user_id: str, admin=Depends(get_admin_user)):
             {
                 "$set": {
                     "status": "active",
-                    "approved_at": datetime.utcnow()
+                    "approved_at": datetime.utcnow(),
+                    "updated_at": datetime.utcnow()
                 }
             }
         )
@@ -543,6 +544,7 @@ async def approve_user(user_id: str, admin=Depends(get_admin_user)):
         if result.modified_count == 0:
             raise HTTPException(status_code=404, detail="Usuário não encontrado")
         
+        logger.info(f"User {user_id} approved by admin {admin['email']}")
         return {"message": "Usuário aprovado com sucesso"}
     except HTTPException as e:
         raise e

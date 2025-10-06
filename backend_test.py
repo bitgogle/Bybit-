@@ -462,6 +462,40 @@ class BackendTester:
             self.log_result(test_name, False, f"Balance adjustment failed with status {response.status_code}", response.text)
             return False
     
+    def test_balance_deduction_verification(self):
+        """Test that balance was correctly deducted after investment"""
+        test_name = "Verify Balance Deduction After Investment"
+        
+        if not self.token:
+            self.log_result(test_name, False, "No authentication token available")
+            return False
+            
+        response = self.make_request("GET", "/users/dashboard")
+        
+        if response is None:
+            self.log_result(test_name, False, "Request failed - connection error")
+            return False
+            
+        if response.status_code == 200:
+            dashboard = response.json()
+            balance = dashboard.get("balance", {})
+            available = balance.get("available_for_withdrawal", 0)
+            total_invested = balance.get("total_invested", 0)
+            
+            # We started with R$1000, invested R$200, should have R$800 left
+            expected_available = 800.0
+            expected_invested = 200.0
+            
+            if available == expected_available and total_invested == expected_invested:
+                self.log_result(test_name, True, f"Balance correctly deducted. Available: R$ {available}, Invested: R$ {total_invested}")
+                return True
+            else:
+                self.log_result(test_name, False, f"Balance mismatch. Expected available: R$ {expected_available}, got: R$ {available}. Expected invested: R$ {expected_invested}, got: R$ {total_invested}")
+                return False
+        else:
+            self.log_result(test_name, False, f"Dashboard request failed with status {response.status_code}", response.text)
+            return False
+    
     def run_all_tests(self):
         """Run all backend tests"""
         print("=" * 60)

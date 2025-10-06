@@ -33,9 +33,13 @@ export default function AdminSettings() {
 
     try {
       await adminAPI.updateSettings(settings);
-      setSuccess('Configurações atualizadas com sucesso!');
+      const successMsg = 'Configurações atualizadas com sucesso! Alterações aplicadas em toda a plataforma.';
+      setSuccess(successMsg);
+      toast.success(successMsg);
     } catch (err) {
-      setError(err.response?.data?.detail || 'Erro ao atualizar configurações');
+      const errorMsg = err.response?.data?.detail || 'Erro ao atualizar configurações';
+      setError(errorMsg);
+      toast.error(errorMsg);
     } finally {
       setSaving(false);
     }

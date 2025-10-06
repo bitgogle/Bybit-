@@ -409,8 +409,11 @@ class AdminApprovalTester:
         
         withdrawal_response = self.make_request("POST", "/withdrawals", withdrawal_data, token=user_token)
         
-        if not withdrawal_response or withdrawal_response.status_code != 200:
-            self.log_result(test_name, False, "Failed to create withdrawal request", withdrawal_response.text if withdrawal_response else "No response")
+        if not withdrawal_response:
+            self.log_result(test_name, False, "Failed to create withdrawal request - No response from server")
+            return False
+        elif withdrawal_response.status_code != 200:
+            self.log_result(test_name, False, f"Failed to create withdrawal request - Status: {withdrawal_response.status_code}", withdrawal_response.text)
             return False
         
         transaction_id = withdrawal_response.json().get("transaction", {}).get("id")

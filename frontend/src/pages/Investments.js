@@ -216,8 +216,8 @@ export default function Investments() {
         </div>
       </div>
 
-      {/* Investment Modal */}
-      {showModal && (
+      {/* Amount Input Modal */}
+      {showAmountModal && (
         <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
           <div className="bg-card border border-border rounded-lg p-6 max-w-md w-full">
             <h2 className="text-2xl font-bold mb-4">Novo Investimento</h2>
@@ -236,7 +236,7 @@ export default function Investments() {
               </div>
 
               {error && (
-                <div className="bg-destructive/10 border border-destructive text-destructive px-4 py-3 rounded">
+                <div className="bg-destructive/10 border border-destructive text-destructive px-4 py-3 rounded text-sm">
                   {error}
                 </div>
               )}
@@ -260,7 +260,7 @@ export default function Investments() {
               <div className="flex gap-3">
                 <button
                   onClick={() => {
-                    setShowModal(false);
+                    setShowAmountModal(false);
                     setAmount('');
                     setError('');
                   }}
@@ -269,11 +269,64 @@ export default function Investments() {
                   Cancelar
                 </button>
                 <button
-                  onClick={handleInvest}
-                  disabled={loading || !amount}
+                  onClick={proceedToConfirmation}
+                  disabled={!amount}
                   className="flex-1 px-4 py-2 bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg font-medium transition-colors disabled:opacity-50"
                 >
-                  {loading ? 'Investindo...' : 'Confirmar'}
+                  Continuar
+                </button>
+              </div>
+            </div>
+          </div>
+        </div>
+      )}
+
+      {/* Confirmation Modal */}
+      {showConfirmModal && (
+        <div className="fixed inset-0 bg-black/50 flex items-center justify-center z-50 p-4">
+          <div className="bg-card border border-border rounded-lg p-6 max-w-md w-full">
+            <h2 className="text-2xl font-bold mb-4">Confirmar Investimento</h2>
+            
+            <div className="space-y-4">
+              <div className="bg-background border border-border rounded-lg p-4 space-y-3">
+                <div className="flex justify-between items-center">
+                  <span className="text-sm text-muted-foreground">Plano:</span>
+                  <span className="font-bold">{selectedPlan?.name}</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-sm text-muted-foreground">Valor:</span>
+                  <span className="font-bold text-primary text-lg">R$ {parseFloat(amount).toFixed(2)}</span>
+                </div>
+                <div className="flex justify-between items-center">
+                  <span className="text-sm text-muted-foreground">Duração:</span>
+                  <span className="font-bold">{selectedPlan?.lock_hours}h</span>
+                </div>
+              </div>
+
+              <p className="text-center text-muted-foreground">
+                Tem certeza que deseja iniciar este investimento?
+              </p>
+
+              {error && (
+                <div className="bg-destructive/10 border border-destructive text-destructive px-4 py-3 rounded text-sm">
+                  {error}
+                </div>
+              )}
+
+              <div className="flex gap-3 pt-2">
+                <button
+                  onClick={handleCancelInvestment}
+                  disabled={loading}
+                  className="flex-1 px-4 py-3 bg-secondary hover:bg-secondary/80 rounded-lg font-medium transition-colors"
+                >
+                  Cancelar
+                </button>
+                <button
+                  onClick={handleStartInvestment}
+                  disabled={loading}
+                  className="flex-1 px-4 py-3 bg-primary hover:bg-primary/90 text-primary-foreground rounded-lg font-medium transition-colors disabled:opacity-50"
+                >
+                  {loading ? 'Processando...' : 'Iniciar'}
                 </button>
               </div>
             </div>

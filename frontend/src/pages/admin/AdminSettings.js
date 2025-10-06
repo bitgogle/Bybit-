@@ -1,6 +1,7 @@
 import React, { useState, useEffect } from 'react';
 import AdminLayout from '@/components/AdminLayout';
 import { settingsAPI, adminAPI } from '@/lib/api';
+import toast from 'react-hot-toast';
 
 export default function AdminSettings() {
   const [settings, setSettings] = useState(null);

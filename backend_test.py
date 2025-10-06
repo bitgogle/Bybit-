@@ -20,6 +20,7 @@ class BackendTester:
     def __init__(self):
         self.base_url = BASE_URL
         self.token = None
+        self.admin_token = None
         self.user_id = None
         self.test_results = []
         

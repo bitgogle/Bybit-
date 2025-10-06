@@ -173,7 +173,10 @@ class AdminApprovalTester:
                 "password": user["password"]
             }, token=None)
             
-            if login_response and login_response.status_code == 403:
+            if not login_response:
+                self.log_result(test_name, False, "User rejected but no response from login attempt")
+                return False
+            elif login_response.status_code == 403:
                 error_msg = login_response.json().get("detail", "")
                 if "rejeitada" in error_msg.lower() or "rejected" in error_msg.lower():
                     self.log_result(test_name, True, "User rejected successfully and cannot login")
@@ -182,7 +185,7 @@ class AdminApprovalTester:
                     self.log_result(test_name, False, f"Wrong rejection message: {error_msg}")
                     return False
             else:
-                self.log_result(test_name, False, "User rejected but login response unexpected", login_response.text if login_response else "No response")
+                self.log_result(test_name, False, f"User rejected but login response unexpected - Status: {login_response.status_code}", login_response.text)
                 return False
         else:
             self.log_result(test_name, False, f"User rejection failed with status {response.status_code}", response.text)

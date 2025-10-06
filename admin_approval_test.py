@@ -360,6 +360,7 @@ class AdminApprovalTester:
         
         # Add balance to user for withdrawal testing
         balance_data = {
+            "user_id": user["user_id"],
             "adjustment_type": "add",
             "amount": 1000.0,
             "balance_type": "available_for_withdrawal",

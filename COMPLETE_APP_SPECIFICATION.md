@@ -1,7 +1,7 @@
-# BYBIT CRYPTOCURRENCY INVESTMENT PLATFORM - COMPLETE SPECIFICATION
+# BYBIT CRYPTOCURRENCY INVESTMENT PLATFORM - ULTRA-DETAILED SPECIFICATION
 
 ## EXECUTIVE SUMMARY
-Create a professional cryptocurrency investment platform called "BYBIT" in Brazilian Portuguese with automated profit distribution, multi-currency support, admin approval workflows, and sophisticated administrative controls. The platform features a dark theme for users with golden-yellow accents and a blue/white/black theme for the admin panel.
+Create a professional cryptocurrency investment platform called "BYBIT" (all capital letters) in Brazilian Portuguese with automated profit distribution every 6 hours, multi-currency support (BRL and USDT), admin approval workflows for user registrations and transactions, and sophisticated administrative controls. The platform features a dark theme (#000000 pure black background) for users with golden-yellow (#F5C842) accents and a distinct blue (#1E3A8A)/white (#FFFFFF)/black (#111827) theme for the admin panel. Every user action requires admin approval before becoming active. The platform includes automated investment profit distribution, multi-step deposit/withdrawal flows with payment proof uploads, referral commission system (5 levels), and comprehensive admin controls.
 
 ---
 

@@ -145,7 +145,7 @@ export default function Investments() {
                 </div>
 
                 <button
-                  onClick={() => openModal(plan)}
+                  onClick={() => openAmountModal(plan)}
                   className="w-full bg-primary hover:bg-primary/90 text-primary-foreground py-2 rounded-lg font-medium transition-colors"
                 >
                   Investir Agora

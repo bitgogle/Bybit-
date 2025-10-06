@@ -556,12 +556,19 @@ async def reject_user(user_id: str, admin=Depends(get_admin_user)):
     try:
         result = await db.users.update_one(
             {"id": user_id},
-            {"$set": {"status": "rejected"}}
+            {
+                "$set": {
+                    "status": "rejected",
+                    "rejected_at": datetime.utcnow(),
+                    "updated_at": datetime.utcnow()
+                }
+            }
         )
         
         if result.modified_count == 0:
             raise HTTPException(status_code=404, detail="Usuário não encontrado")
         
+        logger.info(f"User {user_id} rejected by admin {admin['email']}")
         return {"message": "Usuário rejeitado"}
     except HTTPException as e:
         raise e

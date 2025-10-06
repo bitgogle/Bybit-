@@ -663,7 +663,7 @@ async def approve_transaction(transaction_id: str, admin=Depends(get_admin_user)
         if not transaction:
             raise HTTPException(status_code=404, detail="Transação não encontrada")
         
-        if transaction["status"] != "pending":
+        if transaction["status"] in ["approved", "completed"]:
             raise HTTPException(status_code=400, detail="Transação já processada")
         
         # Update transaction
@@ -671,7 +671,7 @@ async def approve_transaction(transaction_id: str, admin=Depends(get_admin_user)
             {"id": transaction_id},
             {
                 "$set": {
-                    "status": "approved",
+                    "status": "approved" if transaction["type"] == "deposit" else "completed",
                     "processed_by": admin["id"],
                     "processed_at": datetime.utcnow()
                 }
@@ -680,6 +680,7 @@ async def approve_transaction(transaction_id: str, admin=Depends(get_admin_user)
         
         # Update user balance based on transaction type
         if transaction["type"] == "deposit":
+            # Add balance on deposit approval
             await db.users.update_one(
                 {"id": transaction["user_id"]},
                 {
@@ -689,11 +690,7 @@ async def approve_transaction(transaction_id: str, admin=Depends(get_admin_user)
                     }
                 }
             )
-        elif transaction["type"] == "withdrawal":
-            await db.users.update_one(
-                {"id": transaction["user_id"]},
-                {"$inc": {"available_for_withdrawal": -transaction["amount"]}}
-            )
+        # Withdrawal balance was already deducted on creation, no need to deduct again
         
         return {"message": "Transação aprovada com sucesso"}
     except HTTPException as e:

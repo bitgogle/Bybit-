@@ -699,7 +699,10 @@ async def approve_transaction(transaction_id: str, admin=Depends(get_admin_user)
                     }
                 }
             )
-        # Withdrawal balance was already deducted on creation, no need to deduct again
+            logger.info(f"Deposit {transaction_id} approved by admin {admin['email']} - R$ {transaction['amount']} added to user {transaction['user_id']}")
+        else:
+            # Withdrawal balance was already deducted on creation
+            logger.info(f"Withdrawal {transaction_id} approved by admin {admin['email']} - R$ {transaction['amount']} for user {transaction['user_id']}")
         
         return {"message": "Transação aprovada com sucesso"}
     except HTTPException as e:

@@ -33,40 +33,275 @@ Create a professional cryptocurrency investment platform called "BYBIT" (all cap
 
 ---
 
-## COLOR SCHEME & THEMING
+## COLOR SCHEME & THEMING (EXACT SPECIFICATIONS)
 
-### User Panel (Dark Theme)
+### User Panel - Dark Theme (BYBIT Black & Gold)
+**Color Palette with Exact Names:**
 ```css
-Background: #000000 (pure black)
-Card Background: hsl(var(--card)) - Dark gray/charcoal
-Primary Color: #F5C842 (Golden Yellow) - For buttons, highlights, branding
-Primary Foreground: #000000 (Black text on yellow buttons)
-Text Color: #FFFFFF (White)
-Muted Text: #9CA3AF (Light gray)
-Border Color: #374151 (Dark gray)
-Secondary: #1F2937 (Dark charcoal)
-Destructive: #EF4444 (Red for errors/delete)
+/* Background Colors */
+--background: #000000 (Pure Black - Main background)
+--card: #18181B (Zinc 900 - Card backgrounds)
+--card-hover: #27272A (Zinc 800 - Card hover state)
+
+/* Primary Colors - Golden Yellow */
+--primary: #F5C842 (Honey Gold - Main brand color)
+--primary-hover: #E6B933 (Darker Gold - Hover state)
+--primary-foreground: #000000 (Black - Text on gold buttons)
+
+/* Text Colors */
+--foreground: #FFFFFF (White - Primary text)
+--muted-foreground: #9CA3AF (Cool Gray 400 - Secondary text)
+--muted: #52525B (Zinc 600 - Disabled text)
+
+/* Border & Divider Colors */
+--border: #374151 (Gray 700 - Card borders, dividers)
+--input-border: #4B5563 (Gray 600 - Input field borders)
+
+/* Secondary Colors */
+--secondary: #1F2937 (Gray 800 - Secondary buttons)
+--secondary-foreground: #F9FAFB (Gray 50 - Text on secondary buttons)
+
+/* Status Colors */
+--success: #10B981 (Emerald 500 - Success states, profit)
+--success-bg: #064E3B (Emerald 900 - Success background 10% opacity)
+--warning: #F59E0B (Amber 500 - Pending states)
+--warning-bg: #78350F (Amber 900 - Warning background 10% opacity)
+--destructive: #EF4444 (Red 500 - Errors, reject, delete)
+--destructive-bg: #7F1D1D (Red 900 - Error background 10% opacity)
+--info: #3B82F6 (Blue 500 - Information)
+--info-bg: #1E3A8A (Blue 900 - Info background 10% opacity)
+
+/* Sidebar Specific */
+--sidebar-bg: rgba(24, 24, 27, 0.70) (Zinc 900 at 70% opacity)
+--sidebar-active: #F5C842 (Golden Yellow - Active menu item)
+--sidebar-hover: rgba(82, 82, 91, 0.5) (Zinc 600 at 50% - Hover state)
 ```
 
-### Admin Panel (Blue/White/Black Theme)
+**Typography:**
+- **Font Family:** 'Inter', -apple-system, BlinkMacSystemFont, 'Segoe UI', sans-serif
+- **Logo Size:** 36px (3xl), font-weight: 700 (bold)
+- **Page Title:** 30px (3xl), font-weight: 700 (bold)
+- **Card Title:** 18px (lg), font-weight: 600 (semibold)
+- **Body Text:** 14px (base), font-weight: 400 (normal)
+- **Small Text:** 12px (sm), font-weight: 400 (normal)
+- **Button Text:** 14px (base), font-weight: 600 (semibold)
+- **Line Height:** 1.5 for body text, 1.2 for headings
+
+**Spacing System (Tailwind Scale):**
+- Extra Small: 4px (p-1)
+- Small: 8px (p-2)
+- Medium: 16px (p-4)
+- Large: 24px (p-6)
+- Extra Large: 32px (p-8)
+- Card Padding: 24px (p-6)
+- Page Padding: 24px (p-6)
+- Section Gap: 24px (space-y-6)
+
+### Admin Panel - Blue/White/Black Theme (Professional Business)
+**Color Palette with Exact Names:**
 ```css
-Background: #FFFFFF (White)
-Sidebar: #1E3A8A (Dark Blue) with 70% opacity
-Sidebar Text: #FFFFFF (White)
-Primary Buttons: #2563EB (Blue)
-Active Menu: #3B82F6 (Lighter blue)
-Header: #FFFFFF with border
-Text: #111827 (Almost black)
-Cards: #FFFFFF with gray borders
-Status Badges: Green, Yellow, Red with 10% opacity backgrounds
+/* Background Colors */
+--admin-background: #FFFFFF (White - Main background)
+--admin-card: #FFFFFF (White - Card backgrounds)
+--admin-hover: #F3F4F6 (Gray 100 - Hover state)
+
+/* Primary Colors - Business Blue */
+--admin-primary: #2563EB (Blue 600 - Primary actions)
+--admin-primary-hover: #1D4ED8 (Blue 700 - Hover state)
+--admin-primary-foreground: #FFFFFF (White - Text on blue)
+
+/* Sidebar Colors */
+--admin-sidebar-bg: rgba(30, 58, 138, 0.70) (Blue 900 at 70% opacity)
+--admin-sidebar-active: #3B82F6 (Blue 500 - Active menu)
+--admin-sidebar-hover: rgba(59, 130, 246, 0.2) (Blue 500 at 20% - Hover)
+--admin-sidebar-text: #FFFFFF (White - Sidebar text)
+--admin-sidebar-muted: #BFDBFE (Blue 200 - Muted sidebar text)
+--admin-sidebar-border: #1E40AF (Blue 800 - Sidebar dividers)
+
+/* Text Colors */
+--admin-text: #111827 (Gray 900 - Primary text)
+--admin-text-muted: #6B7280 (Gray 500 - Secondary text)
+--admin-text-light: #9CA3AF (Gray 400 - Tertiary text)
+
+/* Border Colors */
+--admin-border: #E5E7EB (Gray 200 - Borders, dividers)
+--admin-border-dark: #D1D5DB (Gray 300 - Emphasis borders)
+
+/* Button Colors */
+--admin-success: #10B981 (Emerald 500 - Approve buttons)
+--admin-success-hover: #059669 (Emerald 600 - Approve hover)
+--admin-danger: #EF4444 (Red 500 - Reject/delete buttons)
+--admin-danger-hover: #DC2626 (Red 600 - Danger hover)
+--admin-warning: #F59E0B (Amber 500 - Warning buttons)
+--admin-info: #3B82F6 (Blue 500 - Info buttons)
+
+/* Status Badge Colors */
+--admin-status-active: #10B981 (Emerald 500)
+--admin-status-active-bg: #D1FAE5 (Emerald 100 - 10% opacity background)
+--admin-status-pending: #F59E0B (Amber 500)
+--admin-status-pending-bg: #FEF3C7 (Amber 100 - 10% opacity background)
+--admin-status-rejected: #EF4444 (Red 500)
+--admin-status-rejected-bg: #FEE2E2 (Red 100 - 10% opacity background)
+--admin-status-completed: #3B82F6 (Blue 500)
+--admin-status-completed-bg: #DBEAFE (Blue 100 - 10% opacity background)
+
+/* Admin Badge */
+--admin-badge-bg: #DBEAFE (Blue 100 - "MODO ADMINISTRATIVO" background)
+--admin-badge-text: #1E3A8A (Blue 900 - Badge text)
 ```
 
-### Common UI Elements
-- **Font Family:** Inter (sans-serif)
-- **Border Radius:** 8px (lg), 6px (md), 4px (sm)
-- **Shadows:** Subtle shadows on cards and modals
-- **Transparency:** Sidebars at 70% opacity with backdrop-blur-md
-- **Transitions:** All interactive elements have smooth 200-300ms transitions
+**Admin Typography:**
+- **Font Family:** 'Inter', sans-serif (same as user panel)
+- **Page Title:** 30px (3xl), font-weight: 700 (bold), color: #111827
+- **Section Title:** 20px (xl), font-weight: 600 (semibold)
+- **Table Headers:** 14px (sm), font-weight: 600 (semibold), color: #6B7280
+- **Table Content:** 14px (sm), font-weight: 400 (normal)
+- **Button Text:** 14px (sm), font-weight: 500 (medium)
+
+### Common UI Elements (Exact Specifications)
+
+**Border Radius:**
+```css
+--radius-sm: 4px (Small elements, badges)
+--radius-md: 6px (Buttons, inputs)
+--radius-lg: 8px (Cards, modals)
+--radius-xl: 12px (Large containers)
+--radius-full: 9999px (Circular elements, pills)
+```
+
+**Box Shadows:**
+```css
+/* Card Shadow */
+box-shadow: 0 1px 3px 0 rgba(0, 0, 0, 0.1), 0 1px 2px 0 rgba(0, 0, 0, 0.06);
+
+/* Card Hover Shadow */
+box-shadow: 0 4px 6px -1px rgba(0, 0, 0, 0.1), 0 2px 4px -1px rgba(0, 0, 0, 0.06);
+
+/* Modal Shadow */
+box-shadow: 0 20px 25px -5px rgba(0, 0, 0, 0.1), 0 10px 10px -5px rgba(0, 0, 0, 0.04);
+
+/* Button Focus Shadow */
+box-shadow: 0 0 0 3px rgba(245, 196, 66, 0.5); /* Golden yellow at 50% */
+```
+
+**Transparency & Blur:**
+```css
+/* Sidebar Transparency */
+background-color: rgba(24, 24, 27, 0.70); /* 70% opacity */
+backdrop-filter: blur(12px); /* Medium blur */
+
+/* Modal Overlay */
+background-color: rgba(0, 0, 0, 0.50); /* 50% opacity black */
+
+/* Hover States */
+opacity: 0.9; /* 90% opacity on hover */
+```
+
+**Transitions & Animations:**
+```css
+/* All interactive elements */
+transition: all 200ms cubic-bezier(0.4, 0, 0.2, 1);
+
+/* Colors only */
+transition: background-color 200ms, color 200ms;
+
+/* Transform animations */
+transition: transform 300ms cubic-bezier(0.4, 0, 0.2, 1);
+
+/* Button hover scale */
+transform: scale(1.05);
+
+/* Modal entrance */
+animation: fadeIn 200ms ease-out;
+
+/* Toast slide in */
+animation: slideInRight 300ms cubic-bezier(0.4, 0, 0.2, 1);
+```
+
+**Button Specifications:**
+
+**Primary Button (Golden Yellow):**
+```css
+background-color: #F5C842;
+color: #000000;
+padding: 12px 24px;
+border-radius: 8px;
+font-weight: 600;
+font-size: 14px;
+min-height: 44px; /* Touch-friendly */
+transition: all 200ms;
+
+/* Hover State */
+background-color: #E6B933;
+transform: translateY(-1px);
+box-shadow: 0 4px 6px -1px rgba(245, 196, 66, 0.3);
+
+/* Active/Pressed State */
+background-color: #D4A82E;
+transform: translateY(0);
+
+/* Disabled State */
+background-color: #6B7280;
+color: #9CA3AF;
+cursor: not-allowed;
+opacity: 0.5;
+```
+
+**Secondary Button (Gray):**
+```css
+background-color: #1F2937;
+color: #F9FAFB;
+padding: 12px 24px;
+border-radius: 8px;
+border: 1px solid #374151;
+
+/* Hover State */
+background-color: #374151;
+border-color: #4B5563;
+```
+
+**Danger Button (Red):**
+```css
+background-color: #EF4444;
+color: #FFFFFF;
+
+/* Hover State */
+background-color: #DC2626;
+```
+
+**Success Button (Green):**
+```css
+background-color: #10B981;
+color: #FFFFFF;
+
+/* Hover State */
+background-color: #059669;
+```
+
+**Input Field Specifications:**
+```css
+background-color: #18181B; /* Zinc 900 */
+color: #FFFFFF;
+border: 1px solid #4B5563; /* Gray 600 */
+border-radius: 8px;
+padding: 12px 16px;
+font-size: 14px;
+min-height: 44px;
+
+/* Focus State */
+border-color: #F5C842; /* Golden yellow */
+outline: none;
+box-shadow: 0 0 0 3px rgba(245, 196, 66, 0.1);
+
+/* Error State */
+border-color: #EF4444; /* Red */
+box-shadow: 0 0 0 3px rgba(239, 68, 68, 0.1);
+
+/* Disabled State */
+background-color: #27272A;
+color: #71717A;
+cursor: not-allowed;
+```
 
 ---
 

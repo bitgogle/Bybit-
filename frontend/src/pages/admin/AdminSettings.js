@@ -136,7 +136,7 @@ export default function AdminSettings() {
           </div>
 
           {/* Deposit Settings */}
-          <div className="bg-card border border-border rounded-lg p-6">
+          <div className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
             <h2 className="font-bold text-lg mb-4">Configurações de Depósito</h2>
             <div className="grid grid-cols-1 md:grid-cols-2 gap-4">
               <div>
@@ -164,7 +164,7 @@ export default function AdminSettings() {
           </div>
 
           {/* PIX Settings */}
-          <div className="bg-card border border-border rounded-lg p-6">
+          <div className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
             <h2 className="font-bold text-lg mb-4">Configurações PIX</h2>
             <div className="space-y-4">
               <div>
@@ -203,7 +203,7 @@ export default function AdminSettings() {
           </div>
 
           {/* USDT Settings */}
-          <div className="bg-card border border-border rounded-lg p-6">
+          <div className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
             <h2 className="font-bold text-lg mb-4">Configurações USDT</h2>
             <div className="space-y-4">
               <div>
@@ -231,7 +231,7 @@ export default function AdminSettings() {
           </div>
 
           {/* Bybit Settings */}
-          <div className="bg-card border border-border rounded-lg p-6">
+          <div className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
             <h2 className="font-bold text-lg mb-4">Configurações Bybit</h2>
             <div>
               <label className="block text-sm font-medium mb-2">Bybit UID</label>
@@ -246,7 +246,7 @@ export default function AdminSettings() {
           </div>
 
           {/* Support Settings */}
-          <div className="bg-card border border-border rounded-lg p-6">
+          <div className="bg-white border border-gray-200 rounded-lg p-6 shadow-sm">
             <h2 className="font-bold text-lg mb-4">Suporte</h2>
             <div>
               <label className="block text-sm font-medium mb-2">WhatsApp de Suporte</label>

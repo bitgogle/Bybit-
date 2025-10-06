@@ -42,10 +42,14 @@ export default function Register() {
     try {
       const { confirm_password, ...registerData } = formData;
       const response = await register(registerData);
-      setSuccess(response.data.message);
+      const successMsg = response.data.message;
+      setSuccess(successMsg);
+      toast.success(successMsg);
       setTimeout(() => navigate('/login'), 3000);
     } catch (err) {
-      setError(err.response?.data?.detail || 'Erro ao cadastrar');
+      const errorMsg = err.response?.data?.detail || 'Erro ao cadastrar';
+      setError(errorMsg);
+      toast.error(errorMsg);
     } finally {
       setLoading(false);
     }

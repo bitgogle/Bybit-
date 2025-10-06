@@ -263,7 +263,7 @@ export default function AdminSettings() {
           <button
             type="submit"
             disabled={saving}
-            className="w-full bg-primary hover:bg-primary/90 text-primary-foreground font-bold py-3 rounded-lg transition-colors disabled:opacity-50"
+            className="w-full bg-blue-600 hover:bg-blue-700 text-white font-bold py-3 rounded-lg transition-colors disabled:opacity-50 shadow-md"
           >
             {saving ? 'Salvando...' : 'Salvar Configurações'}
           </button>

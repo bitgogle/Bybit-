@@ -7,7 +7,8 @@ export default function Investments() {
   const [plans, setPlans] = useState([]);
   const [investments, setInvestments] = useState([]);
   const [user, setUser] = useState(null);
-  const [showModal, setShowModal] = useState(false);
+  const [showAmountModal, setShowAmountModal] = useState(false);
+  const [showConfirmModal, setShowConfirmModal] = useState(false);
   const [selectedPlan, setSelectedPlan] = useState(null);
   const [amount, setAmount] = useState('');
   const [loading, setLoading] = useState(false);
@@ -29,10 +30,11 @@ export default function Investments() {
       setUser(dashboardRes.data.balance);
     } catch (error) {
       console.error('Error loading data:', error);
+      toast.error('Erro ao carregar dados');
     }
   };
 
-  const handleInvest = async () => {
+  const handleStartInvestment = async () => {
     if (!amount || !selectedPlan) return;
 
     setError('');
@@ -43,21 +45,55 @@ export default function Investments() {
         plan_id: selectedPlan.id,
         amount: parseFloat(amount)
       });
-      setShowModal(false);
+      setShowConfirmModal(false);
+      setShowAmountModal(false);
       setAmount('');
       setSelectedPlan(null);
       loadData();
-      alert('Investimento criado com sucesso!');
+      toast.success('Investimento ativado com sucesso!');
     } catch (err) {
-      setError(err.response?.data?.detail || 'Erro ao criar investimento');
+      const errorMsg = err.response?.data?.detail || 'Erro ao criar investimento';
+      setError(errorMsg);
+      toast.error(errorMsg);
     } finally {
       setLoading(false);
     }
   };
 
-  const openModal = (plan) => {
+  const handleCancelInvestment = () => {
+    setShowConfirmModal(false);
+    setShowAmountModal(false);
+    setAmount('');
+    setError('');
+    toast.error('Processo de investimento cancelado');
+  };
+
+  const openAmountModal = (plan) => {
     setSelectedPlan(plan);
-    setShowModal(true);
+    setShowAmountModal(true);
+    setError('');
+  };
+
+  const proceedToConfirmation = () => {
+    if (!amount) {
+      setError('Por favor, insira um valor');
+      return;
+    }
+    
+    const amountValue = parseFloat(amount);
+    if (amountValue < selectedPlan.min_amount || amountValue > selectedPlan.max_amount) {
+      setError(`Valor deve estar entre R$ ${selectedPlan.min_amount} e R$ ${selectedPlan.max_amount}`);
+      return;
+    }
+
+    if (user?.available_for_withdrawal < amountValue) {
+      setError('Saldo insuficiente');
+      toast.error('Saldo insuficiente para este investimento');
+      return;
+    }
+
+    setShowAmountModal(false);
+    setShowConfirmModal(true);
     setError('');
   };
 

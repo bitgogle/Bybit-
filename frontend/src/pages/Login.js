@@ -18,9 +18,12 @@ export default function Login() {
 
     try {
       await login({ email, password });
+      toast.success('Login realizado com sucesso!');
       navigate('/');
     } catch (err) {
-      setError(err.response?.data?.detail || 'Erro ao fazer login');
+      const errorMsg = err.response?.data?.detail || 'Erro ao fazer login';
+      setError(errorMsg);
+      toast.error(errorMsg);
     } finally {
       setLoading(false);
     }
